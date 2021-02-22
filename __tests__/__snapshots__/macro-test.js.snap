@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`invariant condition and message 1`] = `
+"import { invariant } from \\"@vasiliicuhar/invariant.macro\\";
+let bool = true;
+invariant(bool, \\"message\\");"
+`;
+
+exports[`invariant condition only 1`] = `
+"import { invariant } from \\"@vasiliicuhar/invariant.macro\\";
+invariant(true);"
+`;
+
+exports[`invariant production env 1`] = `
+"import { invariant } from \\"@vasiliicuhar/invariant.macro\\";
+let bool = true;
+invariant(bool);"
+`;
