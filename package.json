@@ -33,6 +33,7 @@
     "pretty-quick": "^3.1.0"
   },
   "files": [
+    "README.md",
     "types.d.ts",
     "macro.js",
     "index.mjs"
