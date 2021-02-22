@@ -7,8 +7,6 @@
 ---
 
 <!-- prettier-ignore-start -->
-[![Build Status][build-badge]][build]
-[![Code Coverage][coverage-badge]][coverage]
 [![version][version-badge]][package]
 [![downloads][downloads-badge]][npmtrends]
 [![MIT License][license-badge]][license]
@@ -41,3 +39,12 @@ invariant(condition, `error message ${prettyPrint(obj)}`)
 // is transpiled to
 invariant(condition)
 ```
+
+<!-- prettier-ignore-start -->
+[version-badge]: https://img.shields.io/npm/v/@vasiliicuhar/invariant.macro.svg?style=flat-square
+[package]: https://www.npmjs.com/package/@vasiliicuhar/invariant.macro
+[downloads-badge]: https://img.shields.io/npm/dm/@vasiliicuhar/invariant.macro.svg?style=flat-square
+[npmtrends]: http://www.npmtrends.com/@vasiliicuhar/invariant.macro
+[license-badge]: https://img.shields.io/npm/l/@vasiliicuhar/invariant.macro.svg?style=flat-square
+[license]: /LICENSE
+<!-- prettier-ignore-end -->
