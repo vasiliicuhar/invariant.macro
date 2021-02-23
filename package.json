@@ -35,7 +35,7 @@
   "files": [
     "README.md",
     "types.d.ts",
-    "macro.js",
-    "index.mjs"
+    "macro.cjs",
+    "index.js"
   ]
 }
