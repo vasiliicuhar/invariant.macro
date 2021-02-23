@@ -2,7 +2,7 @@ let { createMacro } = require("babel-plugin-macros")
 let pkg = require("./package.json")
 
 module.exports = createMacro(
-  function invariantMacro({ references, state, babel: { types: t } }) {
+  function invariant({ references, state, babel: { types: t } }) {
     let tIdentifier = t.identifier("invariant")
 
     state.file.path.node.body.unshift(
