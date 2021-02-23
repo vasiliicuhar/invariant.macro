@@ -8,7 +8,7 @@ module.exports = createMacro(
     state.file.path.node.body.unshift(
       t.importDeclaration(
         [t.importDefaultSpecifier(tIdentifier)],
-        t.stringLiteral(pkg.name + "/invariant.js"),
+        t.stringLiteral(pkg.name + "/invariant"),
       ),
     )
 
