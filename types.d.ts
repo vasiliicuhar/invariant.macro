@@ -1,3 +1,7 @@
 declare module "@vasiliicuhar/invariant.macro" {
-  export default function invariant(condition: any, message?: string): void;
+  type Options = {
+    env?: string
+  }
+
+  export default function invariant(condition: any, msg?: string, options?: Options): void
 }

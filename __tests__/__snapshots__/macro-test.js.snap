@@ -1,18 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`invariant condition and message 1`] = `
-"import { invariant } from \\"@vasiliicuhar/invariant.macro\\";
-let bool = true;
-invariant(bool, \\"message\\");"
+exports[`invariant.macro condition and message: condition and message 1`] = `
+
+import invariant from '../macro.cjs'
+
+let bool = true
+invariant(bool, "message")
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import invariant from "@vasiliicuhar/invariant.macro/invariant"
+let bool = true
+invariant(bool, "message")
+
+
 `;
 
-exports[`invariant condition only 1`] = `
-"import { invariant } from \\"@vasiliicuhar/invariant.macro\\";
-invariant(true);"
+exports[`invariant.macro condition only: condition only 1`] = `
+
+import invariant from '../macro.cjs'
+invariant(true)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import invariant from "@vasiliicuhar/invariant.macro/invariant"
+invariant(true)
+
+
 `;
 
-exports[`invariant production env 1`] = `
-"import { invariant } from \\"@vasiliicuhar/invariant.macro\\";
-let bool = true;
-invariant(bool);"
+exports[`invariant.macro development-only invariant: development-only invariant 1`] = `
+
+import invariant from '../macro.cjs'
+  
+let bool = true
+invariant(bool, "message", { env: 'development' })
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import invariant from "@vasiliicuhar/invariant.macro/invariant"
+let bool = true
+
+
+`;
+
+exports[`invariant.macro production env: production env 1`] = `
+
+import invariant from '../macro.cjs'
+  
+let bool = true
+invariant(bool, "message")
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import invariant from "@vasiliicuhar/invariant.macro/invariant"
+let bool = true
+invariant(bool)
+
+
 `;

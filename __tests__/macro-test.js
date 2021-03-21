@@ -1,47 +1,51 @@
-let { transformAsync } = require("@babel/core")
+import pluginTester from "babel-plugin-tester"
+import plugin from "babel-plugin-macros"
 
-describe("invariant", () => {
-  /**
-   * @param {string} code
-   */
-  const transpile = (code) =>
-    transformAsync(code, {
-      configFile: false,
-      filename: __filename,
-      plugins: ["macros"],
-    })
+beforeEach(() => {
+  process.env.NODE_ENV = "development"
+})
 
-  beforeEach(() => {
-    process.env.NODE_ENV = "development"
-  })
+pluginTester({
+  pluginName: "invariant.macro",
+  plugin,
+  snapshot: true,
+  babelOptions: { filename: __filename },
 
-  test("condition only", async () => {
-    let res = await transpile(`
-      import invariant from '../macro.js'
+  tests: {
+    "condition only": `
+      import invariant from '../macro.cjs'
       invariant(true)
-    `)
-    expect(res.code).toMatchSnapshot()
-  })
+    `,
 
-  test("condition and message", async () => {
-    let res = await transpile(`
-      import invariant from '../macro.js'
+    "condition and message": `
+      import invariant from '../macro.cjs'
 
       let bool = true
       invariant(bool, "message")
-    `)
-    expect(res.code).toMatchSnapshot()
-  })
+    `,
 
-  test("production env", async () => {
-    process.env.NODE_ENV = "production"
+    "production env": {
+      setup() {
+        process.env.NODE_ENV = "production"
+      },
+      code: `
+        import invariant from '../macro.cjs'
+  
+        let bool = true
+        invariant(bool, "message")
+      `,
+    },
 
-    let res = await transpile(`
-      import invariant from '../macro.js'
-
-      let bool = true
-      invariant(bool, "message")
-    `)
-    expect(res.code).toMatchSnapshot()
-  })
+    "development-only invariant": {
+      setup() {
+        process.env.NODE_ENV = "production"
+      },
+      code: `
+        import invariant from '../macro.cjs'
+  
+        let bool = true
+        invariant(bool, "message", { env: 'development' })
+      `,
+    },
+  },
 })

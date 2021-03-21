@@ -1,4 +1,4 @@
-let { createMacro } = require("babel-plugin-macros")
+let { createMacro, MacroError } = require("babel-plugin-macros")
 let pkg = require("./package.json")
 
 module.exports = createMacro(
@@ -17,19 +17,32 @@ module.exports = createMacro(
       let parent = refPath.parentPath.node
 
       if (!t.isCallExpression(parent)) {
-        throw new Error(`Expected call expression. Found: ${parent.type}`)
+        throw new MacroError(`Expected call expression. Found: ${parent.type}`)
       }
 
-      if (parent.arguments.length === 0 || parent.arguments.length > 2) {
-        throw new Error(`Unexpected argument count: ${parent.arguments.length}`)
+      if (parent.arguments.length === 0) {
+        throw new MacroError(
+          `Unexpected argument count: ${parent.arguments.length}`,
+        )
       }
 
-      refPath.parentPath.replaceWith(
-        t.callExpression(
-          tIdentifier,
-          isProduction ? parent.arguments.slice(0, 1) : parent.arguments,
-        ),
-      )
+      if (
+        parent.arguments.length > 2 &&
+        t.isObjectExpression(parent.arguments[2]) &&
+        parent.arguments[2].properties.find((x) =>
+          t.isObjectProperty(x, { key: "env" }),
+        )?.value.value !== process.env.NODE_ENV
+      ) {
+        // remove invariant call, if options.env is different from NODE_ENV
+        refPath.parentPath.remove()
+      } else {
+        refPath.parentPath.replaceWith(
+          t.callExpression(
+            tIdentifier,
+            isProduction ? parent.arguments.slice(0, 1) : parent.arguments,
+          ),
+        )
+      }
     })
   },
   {
