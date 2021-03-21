@@ -30,7 +30,7 @@ import invariant from "@vasiliicuhar/invariant.macro"
 
 let sum = 2 + 3
 invariant(sum === 4, `expected 4, got ${sum}`)
-// throws new Error('Invariant failed: expected 4, got 5')
+// throws new InvariantError('Invariant failed: expected 4, got 5')
 ```
 
 In production error messages are stripped from resulting bundle
