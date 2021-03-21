@@ -40,6 +40,12 @@ invariant(condition, `error message ${prettyPrint(obj)}`)
 invariant(condition)
 ```
 
+## Development only invariants
+
+```js
+invariant(condition, "invariant failed", { env: "development" })
+```
+
 <!-- prettier-ignore-start -->
 [version-badge]: https://img.shields.io/npm/v/@vasiliicuhar/invariant.macro.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@vasiliicuhar/invariant.macro
