@@ -1,0 +1,23 @@
+name: Publish
+
+on:
+  create:
+    tags:
+      - v*
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      node-version: 15.x
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ node-version }}
+      - run: yarn
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
