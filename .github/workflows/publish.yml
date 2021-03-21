@@ -8,15 +8,13 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    env:
-      node-version: 15.x
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ node-version }}
+      - name: Use Node.js 15.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ node-version }}
+          node-version: 15.x
       - run: yarn
       - run: npm publish --access public
         env:
