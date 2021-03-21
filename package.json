@@ -1,6 +1,6 @@
 {
   "name": "@vasiliicuhar/invariant.macro",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Babel macros for invariants",
   "keywords": [
     "invariant",
