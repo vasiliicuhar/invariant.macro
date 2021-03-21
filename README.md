@@ -7,6 +7,7 @@
 ---
 
 <!-- prettier-ignore-start -->
+[![build][build-badge]][build]
 [![version][version-badge]][package]
 [![downloads][downloads-badge]][npmtrends]
 [![MIT License][license-badge]][license]
@@ -50,7 +51,9 @@ invariant(condition, "invariant failed", { env: "development" })
 [version-badge]: https://img.shields.io/npm/v/@vasiliicuhar/invariant.macro.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@vasiliicuhar/invariant.macro
 [downloads-badge]: https://img.shields.io/npm/dm/@vasiliicuhar/invariant.macro.svg?style=flat-square
+[build-badge]: https://github.com/vasiliicuhar/invariant.macro/actions/workflows/build.yml/badge.svg
 [npmtrends]: http://www.npmtrends.com/@vasiliicuhar/invariant.macro
 [license-badge]: https://img.shields.io/npm/l/@vasiliicuhar/invariant.macro.svg?style=flat-square
 [license]: /LICENSE
+[build]: https://github.com/vasiliicuhar/invariant.macro/actions/workflows/build.yml
 <!-- prettier-ignore-end -->
