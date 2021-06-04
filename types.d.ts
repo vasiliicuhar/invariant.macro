@@ -3,5 +3,5 @@ declare module "@vasiliicuhar/invariant.macro" {
     env?: string
   }
 
-  export default function invariant(condition: any, msg?: string, options?: Options): void
+  export default function invariant(condition: any, msg?: string, options?: Options): asserts condition
 }
