@@ -1,3 +1,5 @@
+**deprecated: use <a href="https://www.npmjs.com/package/babel-plugin-dev-expression">babel-plugin-dev-expression</a> instead.**
+
 <div align="center">
 <h1>invariant.macro</h1>
 
